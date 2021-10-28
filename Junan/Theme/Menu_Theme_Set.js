@@ -32,10 +32,31 @@
         refreshPage(false);
         return 'toast://已切换'
 
+      } else if (/影视海报/.test(input)) {
+        let local = "hiker://files/cache/junan/control_yshb";
+        var jn=fetch(local);
+        if(! jn||jn=='OFF'){
+          writeFile(local,'ON')
+        } else {
+          writeFile(local,'OFF')
+        };
+        refreshPage(false);
+        return 'toast://已切换'
+      } else if (/图片一言/.test(input)) {
+        
+        
+        refreshPage(false);
+        return 'toast://已切换';
+        
       } else if (/更新/.test(input)) {
-        return $('确定更新元素吗?').confirm(() => {
-          let base_search_js = 'hiker://files/rules/Junan/js/List_S.js';
-          writeFile(base_search_js, fetch('http://hiker.nokia.press/hikerule/rulelist.json?id=2042&auth=f7a1db09-73fa-5422-9a42-2326b515f9f7'));
+        return $('确定更新主题元素吗?').confirm(() => {
+
+
+          
+          // 更新本体
+          //let base_search_js = 'hiker://files/rules/Junan/js/List_S.js';
+          //writeFile(base_search_js, fetch('http://hiker.nokia.press/hikerule/rulelist.json?id=2042&auth=f7a1db09-73fa-5422-9a42-2326b515f9f7'));
+          
           refreshPage(true);
           return 'toast://已更新'
         })
