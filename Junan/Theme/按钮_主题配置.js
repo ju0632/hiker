@@ -1,19 +1,20 @@
-function single_jnpluin_newWindow_init() {
-  let base_search_js = 'hiker://files/rules/Junan/js/List_S.js';
-  if (!fetch(base_search_js)) {
-    writeFile(base_search_js, fetch('http://hiker.nokia.press/hikerule/rulelist.json?id=2042&auth=f7a1db09-73fa-5422-9a42-2326b515f9f7'));
-  }
-  eval(fetch(base_search_js).replace(base64Decode("QGpzOg=="), ""));
-  return init_duanPluin()
+function single_jnpluin_newWindow_init(){
+    let local_js = 'hiker://files/rules/Junan/js/Menu_Theme_Fixed.js';
+    let online_js = 'http://hiker.nokia.press/hikerule/rulelist.json?id=2143&auth=9687d210-730c-5d83-af05-773f5ab00df6'
+    if(!fetch(local_js)){
+        writeFile(local_js,fetch(online_js));
+    }
+    eval(fetch(local_js).replace(base64Decode("QGpzOg=="),""));
+    return init_JunanPluin()
 }
 
 [{
-  title: "‘‘’’<span style='color:#1aad19'>🎐主题配置</span>",
+    title:"‘‘’’<span style='color:#1aad19'>🎯按钮</span>",
 
-  url: jnpluin_newWindow_init(),
-  extra: { newWindow: true, windowId: 'home.duanpluin' },
-  col_type: "scroll_button",
-  //col_type:'icon_round_small_4', 
-  //pic_url:'https://s3.ax1x.com/2021/02/22/y7wb9O.jpg'
-
-}]
+ 
+    url:single_jnpluin_newWindow_init(),
+    extra:{newWindow: true,windowId:'home.Junanpluin'},
+    col_type:"scroll_button",
+    //col_type:'icon_round_small_4', 
+    //pic_url:'https://s3.ax1x.com/2021/02/22/y7wb9O.jpg'
+}];
